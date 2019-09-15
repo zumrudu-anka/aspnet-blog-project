@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BlogAppWithMVC.Models.Blog>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <ol>
+            <li>@item.Title</li>
+            <li>@item.Description</li>
+            <li>@item.Content</li>
+            <li>@item.AddedDate</li>
+            <li>@item.CategoryId</li>
+            <li>@item.Confirmation</li>
+            <li>@item.MainPage</li>
+
+        </ol>
+    </div>
+}

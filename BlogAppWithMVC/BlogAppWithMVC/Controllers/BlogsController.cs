@@ -17,7 +17,7 @@ namespace BlogAppWithMVC.Controllers
         // GET: Blogs
         public ActionResult Index()
         {
-            var blogs = db.Blogs.Include(b => b.Category);
+            var blogs = db.Blogs.Include(b => b.Category).OrderByDescending(i => i.AddedDate);
             return View(blogs.ToList());
         }
 
@@ -52,6 +52,7 @@ namespace BlogAppWithMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                blog.AddedDate = DateTime.Now;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");

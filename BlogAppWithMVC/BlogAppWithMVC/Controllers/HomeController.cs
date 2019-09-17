@@ -15,7 +15,20 @@ namespace BlogAppWithMVC.Controllers
         
         public ActionResult Index()
         {
-            return View(_context.Blogs.ToList());
+            IEnumerable<BlogModel> bloglar = _context.Blogs.Select(i => new BlogModel
+            {
+                Id = i.Id,
+                Title = i.Title.Length > 100 ? i.Title.Substring(0,100) : i.Title,
+                Description = i.Description,
+                Content = i.Content,
+                Image = i.Image,
+                AddedDate = i.AddedDate,
+                Confirmation = i.Confirmation,
+                MainPage = i.MainPage
+            }).
+            Where(i => i.MainPage == true && i.Confirmation == true);
+
+            return View(bloglar);
         }
     }
 }

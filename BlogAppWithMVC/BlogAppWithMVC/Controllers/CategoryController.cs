@@ -17,7 +17,14 @@ namespace BlogAppWithMVC.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            IEnumerable<CategoryBlog> categoryBlogs = db.Categories.Select(i => new CategoryBlog()
+            {
+                id = i.Id,
+                categoryName = i.CategoryName,
+                blogCount = db.Blogs.Where(j => j.CategoryId == i.Id).Count()
+            });
+
+            return View(categoryBlogs);
         }
 
         // GET: Category/Details/5
@@ -54,7 +61,6 @@ namespace BlogAppWithMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(category);
         }
 

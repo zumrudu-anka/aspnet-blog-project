@@ -5,39 +5,41 @@
 
 <h2>Blog Listesi</h2>
 
-@foreach (var blog in Model)
+<partial name=""></partial>
+
+@if (Model.Count() == 0)
 {
-    <div class="blog">
-        <h3 class="page-header">
-            @Html.ActionLink($"{blog.Title}","Details","Blogs",new { id = blog.Id },null)
-        </h3>
-        <span class="glyphicon glyphicon-time">
-            @blog.AddedDate
-        </span>
-        <hr />
-        <img style="width:780px" src="http://placehold.it/900x300" alt="Alternate Text" />
-        <hr />
-        <p>
-            @blog.Description
-        </p>
-        @Html.ActionLink("Daha Fazla...", "Details", "Blogs", new { id = blog.Id }, new { @class = "btn btn-primary" })
-        <hr />
+    <div class="alert alert-info" role="alert">
+        <h1><span class="glyphicon glyphicon-asterisk"></span>Bu Kategoride Blog Bulunmamaktadir.</h1>
     </div>
+}
+else
+{
+    foreach (var blog in Model)
+    {
+        <div class="blog">
+            <h3 class="page-header">
+                @Html.ActionLink($"{blog.Title}", "Details", "Blogs", new { id = blog.Id }, null)
+            </h3>
+            <span class="glyphicon glyphicon-time">
+                @blog.AddedDate
+            </span>
+            <hr />
+            <img style="width:780px" src="http://placehold.it/900x300" alt="Alternate Text" />
+            <hr />
+            <p>
+                @blog.Description
+            </p>
+            @Html.ActionLink("Daha Fazla...", "Details", "Blogs", new { id = blog.Id }, new { @class = "btn btn-primary" })
+            <hr />
+        </div>
+    }
 }
 
 @section SagKolon{
-    <div style="margin-top:75px" class="well">
-        <h4>Blog Search</h4>
-        <div class="input-group">
-            <input type="text" class="form-control" />
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-        </div>
-    </div>
+
+    @Html.Partial("SearchArea")
     @{
         Html.RenderAction("KategoriPartial", "Category");
-     }
+    }
 }

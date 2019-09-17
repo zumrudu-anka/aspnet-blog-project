@@ -1,0 +1,16 @@
+﻿
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{ 
+    <div style="margin-top:75px" class="well">
+        <h4>Blog Search</h4>
+        <hr />
+        <div class="input-group">
+            @Html.TextBox("AnahtarKelime", null, new { @class = "form-control", @placeholder = "Search..." })
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+}

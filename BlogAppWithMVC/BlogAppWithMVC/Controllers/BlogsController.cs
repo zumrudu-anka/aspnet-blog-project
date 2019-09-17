@@ -15,18 +15,10 @@ namespace BlogAppWithMVC.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: Blogs
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            if (id == null)
-            {
-                var blogs = db.Blogs.Include(b => b.Category).OrderByDescending(i => i.AddedDate);
-                return View(blogs.ToList());
-            }
-            else
-            {
-                var blogs = db.Blogs.Where(i => i.Id == id).Include(b => b.Category).OrderByDescending(i => i.AddedDate);
-                return View(blogs.ToList());
-            }
+            var blogs = db.Blogs.Include(b => b.Category).OrderByDescending(i => i.AddedDate);
+            return View(blogs.ToList());
         }
 
         // GET: Blogs/Details/5

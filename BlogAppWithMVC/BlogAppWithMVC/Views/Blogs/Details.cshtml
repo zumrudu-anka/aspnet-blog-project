@@ -4,37 +4,50 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Model.Title</h2>
-
 <div class="row">
     <div class="col-md-8">
-        <form class="form-inline md-form mr-auto mb-4">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
-        <form class="form-inline md-form mr-auto mb-4">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
-        <form class="form-inline md-form mr-auto mb-4">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
-        <form class="form-inline mr-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
-        <form class="form-inline mr-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
-        <form class="form-inline mr-auto">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-unique btn-rounded btn-sm my-0" type="submit">Search</button>
-        </form>
+        <h1>@Model.Title</h1>
+        <hr />
+        <p>
+            <span class="glyphicon glyphicon-time"></span>
+            @Model.AddedDate
+        </p>
+        <hr />
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="Alternative Text" />
+        <hr />
+        <blockquote>
+            <p>
+                @Model.Description
+            </p>
+        </blockquote>
+        <p>
+            @Model.Content
+        </p>
+        <div class="comment">
+            <div class="well">
+                <form role="form">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Yorum Yap <span class="glyphicon glyphicon-comment"></span></button>
+                </form>
+            </div>
+        </div>
+        <hr />
+        @Html.ActionLink("Homepage", "Index", "Home", null, new { @class = "btn btn-primary" })
     </div>
     <div class="col-md-4">
-
+        <div style="margin-top:75px" class="well">
+            <h4>Blog Search</h4>
+            <div class="input-group">
+                <input type="text" class="form-control" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
     </div>
 </div>
 

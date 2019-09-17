@@ -27,17 +27,31 @@
             </div>
         </div>
     </div>
-
     <div class="container body-content">
-        @RenderBody()
+        @if (IsSectionDefined("SagKolon"))
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    @RenderBody()
+                </div>
+                <div class="col-md-4">
+                    @RenderSection("SagKolon")
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            </div>
+        }
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    
-
 </body>
 </html>

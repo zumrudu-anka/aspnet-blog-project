@@ -5,39 +5,36 @@
 
 <h2>Blog Listesi</h2>
 
-<div class="row">
-    <div class="col-md-8">
-        @foreach (var blog in Model)
-        {
-            <div class="blog">
-                <h3 class="page-header">
-                    @blog.Title
-                </h3>
-                <span class="glyphicon glyphicon-time">
-                    @blog.AddedDate
-                </span>
-                <hr />
-                <img style="width:780px" src="http://placehold.it/900x300" alt="Alternate Text" />
-                <hr />
-                <p>
-                    @blog.Description
-                </p>
-                <button class="btn btn-primary">Daha Fazla...</button>
-                <hr />
-            </div>
-        }
+@foreach (var blog in Model)
+{
+    <div class="blog">
+        <h3 class="page-header">
+            @blog.Title
+        </h3>
+        <span class="glyphicon glyphicon-time">
+            @blog.AddedDate
+        </span>
+        <hr />
+        <img style="width:780px" src="http://placehold.it/900x300" alt="Alternate Text" />
+        <hr />
+        <p>
+            @blog.Description
+        </p>
+        @Html.ActionLink("Daha Fazla...", "Details", "Blogs", new { id = blog.Id }, new { @class = "btn btn-primary" })
+        <hr />
     </div>
-    <div class="col-md-4">
-        <div class="well">
-            <h4>Blog Search</h4>
-            <div class="input-group">
-                <input type="text" class="form-control" />
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
-            </div>
+}
+
+@section SagKolon{
+    <div style="margin-top:75px" class="well">
+        <h4>Blog Search</h4>
+        <div class="input-group">
+            <input type="text" class="form-control" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
         </div>
     </div>
-</div>
+}

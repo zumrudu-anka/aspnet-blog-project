@@ -1,18 +1,21 @@
 ﻿@model IEnumerable<BlogAppWithMVC.Models.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kategori Listesi";
 }
 
-<h2>Index</h2>
+<h2>Kategori Listesi</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Kategori Ekle", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+            Kategori Adı
+        </th>
+        <th>
+            Blog Sayısı
         </th>
         <th></th>
     </tr>
@@ -21,6 +24,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @item.Blogs.Count
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

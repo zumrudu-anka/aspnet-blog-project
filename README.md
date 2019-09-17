@@ -1,1 +1,1 @@
-# BlogAppWithMVC
+![Scene in Game](https://github.com/zumrudu-anka/BlogAppWithMVC/blob/master/Presentation/BlogAppWithMVC.gif)

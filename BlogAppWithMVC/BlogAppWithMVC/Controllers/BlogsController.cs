@@ -48,7 +48,7 @@ namespace BlogAppWithMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,Image,Content,AddedDate,Confirmation,MainPage,CategoryId")] Blog blog)
+        public ActionResult Create([Bind(Include = "Title,Description,Image,Content,Confirmation,MainPage,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
@@ -83,13 +83,24 @@ namespace BlogAppWithMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Image,Content,AddedDate,Confirmation,MainPage,CategoryId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,Title,Description,Image,Content,Confirmation,MainPage,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Blog entity = db.Blogs.Find(blog.Id);
+                if(entity != null){
+                    entity.Title = blog.Title;
+                    entity.Description = blog.Description;
+                    entity.Image = blog.Image;
+                    entity.Content = blog.Content;
+                    entity.Confirmation = blog.Confirmation;
+                    entity.MainPage = blog.MainPage;
+                    entity.CategoryId = blog.CategoryId;
+                    db.SaveChanges();
+
+                    TempData["Blog"] = entity;
+                    return RedirectToAction("Index");
+                }
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", blog.CategoryId);
             return View(blog);

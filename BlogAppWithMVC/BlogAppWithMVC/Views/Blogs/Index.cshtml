@@ -9,10 +9,19 @@
 <hr />
 
 <p>
-    @Html.ActionLink("Yeni Blog Ekle", "Create", null, new { @class = "btn btn-primary"})
+    @Html.ActionLink("Yeni Blog Ekle", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
-<hr />  
+<hr />
+
+@if (TempData["Blog"] != null)
+{
+    var yeni = (BlogAppWithMVC.Models.Blog)TempData["Blog"];
+    <div class="alert alert-success" role="alert">
+        <strong><span class="glyphicon glyphicon-ok"></span> @yeni.Title Başarıyla Güncellendi</strong>
+    </div>
+}
+
 
 <table class="table table-bordered table-hover table-striped">
     <tr>
@@ -40,49 +49,50 @@
         <th style="width:155px"></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddedDate)
-        </td>
-        <td>
-            @if (item.Confirmation)
-            {
-                <label class="label label-success">Onaylı</label>
-            }
-            else
-            {
-                <label class="label label-danger">Onay Bekliyor</label>
-            }
-        </td>
-        <td>
-            @if (item.MainPage)
-            {
-                <label class="label label-success">Anasayfa</label>
-            }
-            else
-            {
-                <label class="label label-danger">Anasayfa Değil</label>
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning btn-xs"})
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" })
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-xs" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedDate)
+            </td>
+            <td>
+                @if (item.Confirmation)
+                {
+                    <label class="label label-success">Onaylı</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Onay Bekliyor</label>
+                }
+            </td>
+            <td>
+                @if (item.MainPage)
+                {
+                    <label class="label label-success">Anasayfa</label>
+                }
+                else
+                {
+                    <label class="label label-danger">Anasayfa Değil</label>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
 
 </table>

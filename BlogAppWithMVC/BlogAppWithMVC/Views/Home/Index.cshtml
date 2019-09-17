@@ -9,7 +9,7 @@
 {
     <div class="blog">
         <h3 class="page-header">
-            @blog.Title
+            @Html.ActionLink($"{blog.Title}","Details","Blogs",new { id = blog.Id },null)
         </h3>
         <span class="glyphicon glyphicon-time">
             @blog.AddedDate
@@ -37,4 +37,7 @@
             </span>
         </div>
     </div>
+    @{
+        Html.RenderAction("KategoriPartial", "Category");
+     }
 }

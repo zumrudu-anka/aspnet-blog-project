@@ -152,6 +152,7 @@
     <Content Include="Views\Blogs\Details.cshtml" />
     <Content Include="Views\Blogs\Edit.cshtml" />
     <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\Category\KategoriPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

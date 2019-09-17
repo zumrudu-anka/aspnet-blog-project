@@ -123,6 +123,11 @@ namespace BlogAppWithMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public PartialViewResult KategoriPartial()
+        {
+            return PartialView(db.Categories.ToList());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -9,6 +9,20 @@
 <p>
     @Html.ActionLink("Kategori Ekle", "Create", null, new { @class = "btn btn-primary" })
 </p>
+
+<hr />
+
+@if (TempData["Category"] != null)
+{
+    var category = (BlogAppWithMVC.Models.Category)TempData["Category"];
+<div class="alert alert-success" role="alert">
+    <strong>
+        <span class="glyphicon glyphicon-ok"></span>@category.CategoryName
+    </strong>
+    Başarıyla Kayıt Edildi.
+</div>
+}
+
 <table class="table table-bordered table-hover table-striped">
     <tr>
         <th>
